@@ -4,7 +4,7 @@ import DBLoader from "./db_loader";
 
 const mdp = dispatch => {
     return {
-        fetchShipments: (page = 0, pageLength = 20) => dispatch(fetchShipments(page, pageLength))
+        fetchShipments: (page = 1, pageLength = 20) => dispatch(fetchShipments(page, pageLength))
     }
 }
 
