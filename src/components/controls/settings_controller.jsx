@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const SettingsController = (props) => {
-    const { settings, dispatch } = props;
+    const { settings, updateSettings } = props;
 
     const [page, setPage] = useState(settings.page);
     const [pageLength, setPageLength] = useState(settings.pageLength);
@@ -9,22 +9,13 @@ const SettingsController = (props) => {
     const handlePage = (e) => {
         const value = e.target.value;
         /^[0-9]*$/.test(value) && setPage(value);
-        /^[0-9][0-9]*$/.test(value) && dispatch(update("page", parseInt(value)));
+        /^[0-9][0-9]*$/.test(value) && updateSettings({"page": parseInt(value)});
     };
 
     const handlePageLength = e => {
         const value = e.target.value;
         /^[0-9]*$/.test(value) && setPageLength(value);
-        value > 4 && dispatch(update("pageLength", parseInt(value)));
-    };
-
-    const update = (setting, value) => {
-        return {
-            type: "UPDATE_SETTINGS",
-            settings: {
-                [setting]: value
-            }
-        }
+        value > 4 && updateSettings({pageLength: parseInt(value)});
     };
 
     return (
