@@ -7,7 +7,7 @@ const shipmentsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_SHIPMENTS:
-            newState = merge({}, state, action.shipments);
+            newState = Object.assign({}, action.shipments);
             return newState;
         default:
             return state;

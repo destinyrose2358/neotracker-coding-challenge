@@ -2,7 +2,7 @@ import * as API_CONST from "../constants/api_const";
 import { normalizeBy } from "./selector_util";
 import { startQueryParams } from "./fetch_util";
 
-export const fetchShipments = (page, pageLength) => {
+export const fetchShipments = (page, pageLength, filters) => {
     const url = startQueryParams(`${API_CONST.API_URL}/shipments`, { "_start": page * pageLength, "_limit": pageLength });
     return fetch(url, {
         method: "GET"
