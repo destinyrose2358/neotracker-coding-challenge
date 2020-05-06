@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ShipmentShowBlockItem from "./shipment_show_block_item";
 
 const ShipmentShow = (props) => {
-  const { shipment, fetchShipment, updateShipmentName, match: {params: { id }}  } = props;
+  const { shipment, fetchShipment, updateShipmentName, match: {params: { id }}, history } = props;
 
   const [ editing, setEditing ] = useState(false);
 
@@ -84,6 +84,11 @@ const ShipmentShow = (props) => {
         {listableAttributes}
       </ul>
       {blockableAttributes}
+      <button
+        onClick={() => history.push("/")}
+      >
+        Home Page
+      </button>
     </div>
   )
 }
