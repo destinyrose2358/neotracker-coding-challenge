@@ -1,14 +1,15 @@
 import React from "react";
 
 const DBLoader = (props) => {
-    props.fetchShipments();
+    const { fetchShipments, page, pageLength, order, direction, criteria } = props;
+    fetchShipments(page, pageLength, order, direction, criteria);
 
     return (
         <button
             className="db-refresh-button"
             onClick={(e) => {
                 e.preventDefault();
-                props.fetchShipments();
+                fetchShipments(page, pageLength, order, direction, criteria);
             }}
         >
             Refresh

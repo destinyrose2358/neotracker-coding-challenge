@@ -2,12 +2,16 @@ import { connect } from "react-redux";
 import { fetchShipments } from "../../actions/db_actions";
 import DBLoader from "./db_loader";
 
-const mdp = dispatch => {
+const msp = ({settings}) => {
+    return settings
+}
+
+const mdp = (dispatch) => {
     return {
-        fetchShipments: (page = 1, pageLength = 20) => dispatch(fetchShipments(page, pageLength))
+        fetchShipments: (page, pageLength, order, direction, criteria) => dispatch(fetchShipments(page, pageLength, order, direction, criteria))
     }
 }
 
-const DBLoaderContainer = connect(undefined, mdp)(DBLoader);
+const DBLoaderContainer = connect(msp, mdp)(DBLoader);
 
 export default DBLoaderContainer;

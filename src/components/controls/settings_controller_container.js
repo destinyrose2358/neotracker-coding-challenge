@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import SettingsController from "./settings_controller";
+import { updateSettingsCreator } from "../../actions/settings_actions";
 
-const msp = (state = {}) => {
+const msp = (state) => {
     return {
         settings: state.settings
     }
@@ -9,7 +10,7 @@ const msp = (state = {}) => {
 
 const mdp = (dispatch) => {
     return {
-        dispatch
+        updateSettings: (newSettings) => dispatch(updateSettingsCreator(newSettings))
     }
 };
 
