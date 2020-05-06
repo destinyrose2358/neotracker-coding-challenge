@@ -1,5 +1,4 @@
 import { RECEIVE_SHIPMENTS } from "../actions/db_actions";
-import merge from "lodash.merge";
 
 const shipmentsReducer = (state = [], action) => {
     Object.freeze(state);
