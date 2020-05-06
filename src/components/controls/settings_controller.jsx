@@ -65,10 +65,16 @@ const SettingsController = (props) => {
                 value={pageLength}
                 onChange={handlePageLength}
             />
+            <label
+                forhtml="criteria-setting"
+            >
+                Criteria:
+            </label>
             <textarea
                 id="criteria-setting"
                 value={criteria}
                 onChange={handleCriteria}
+                placeholder="Ex: 'id:S100, id_like: S101, q: Fabric' (q is a general search, which can be used to filter cargo, services, etc.)"
             >   
             </textarea>
         </div>

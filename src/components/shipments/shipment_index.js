@@ -18,14 +18,22 @@ const ShipmentIndex = ({ shipments, order, direction, updateOrder }) => {
     />
   ));
   const shipmentAttributes = [];
+  const orderIcon = direction === "asc" ? 
+    <i class="fas fa-arrow-down"></i>
+  :
+    <i class="fas fa-arrow-up"></i>
+  ;
+
   Object.entries(shipments[0] || {}).forEach(([key, value]) => {
     if (typeof value !== "object") {
+      
       shipmentAttributes.push(
         <td
           key={key}
           onClick={toggleOrder(key)}
         >
           {key}
+          { (order === key) ? orderIcon : null }
         </td>
       );
     }
