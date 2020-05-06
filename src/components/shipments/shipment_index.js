@@ -1,5 +1,5 @@
 import React from "react";
-import ShipmentItem from "./shipment_item";
+import ShipmentIndexItem from "./shipment_index_item";
 
 const ShipmentIndex = ({ shipments, order, direction, updateOrder }) => {
 
@@ -12,7 +12,7 @@ const ShipmentIndex = ({ shipments, order, direction, updateOrder }) => {
   };
 
   const shipmentItems = shipments.map(shipment => (
-    <ShipmentItem
+    <ShipmentIndexItem
       shipment={shipment}
       key={shipment.id}
     />

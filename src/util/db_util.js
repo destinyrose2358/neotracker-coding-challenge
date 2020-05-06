@@ -36,3 +36,27 @@ const generateCriteria = (criteria) => {
         });
     return criteriaFields;
 };
+
+export const updateShipmentName = (name, id) => {
+    const url = `${API_CONST.API_URL}/shipments/${id}`;
+    return fetch(url,
+        {
+            headers: {
+                'Content-type': "application/json"
+            },
+            method: "PATCH",
+            body: JSON.stringify({
+                name
+            })
+        })
+            .then(res => res.json());
+}
+
+export const fetchShipment = (id) => {
+    const url = `${API_CONST.API_URL}/shipments/${id}`;
+    return fetch(url,
+        {
+            method: "GET"
+        })
+            .then(res => res.json());
+}

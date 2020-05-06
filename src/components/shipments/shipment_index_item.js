@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-const ShipmentItem = ({ shipment, history }) => {
+const ShipmentIndexItem = ({ shipment, history }) => {
   const attributeCols = [];
   Object.values(shipment).forEach((value) => {
     if (typeof value !== "object") {
@@ -23,4 +23,4 @@ const ShipmentItem = ({ shipment, history }) => {
   )
 }
 
-export default withRouter(ShipmentItem);
+export default withRouter(ShipmentIndexItem);
