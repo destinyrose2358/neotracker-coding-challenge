@@ -7,7 +7,7 @@ const receiveShipments = shipments => ({
     shipments
 });
 
-export const fetchShipments = (page, pageLength, ids = []) => dispatch => (
-    DBAPIUtil.fetchShipments(page, pageLength)
+export const fetchShipments = (page, pageLength, order, direction, criteria) => dispatch => (
+    DBAPIUtil.fetchShipments(page, pageLength, order, direction, criteria)
         .then(shipments => dispatch(receiveShipments(shipments)))
 );

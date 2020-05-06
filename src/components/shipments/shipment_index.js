@@ -1,7 +1,16 @@
 import React from "react";
 import ShipmentItem from "./shipment_item";
 
-const ShipmentIndex = ({shipments, orders}) => {
+const ShipmentIndex = ({ shipments, order, direction, updateOrder }) => {
+
+  const toggleOrder = (key) => () => {
+    if (order === key) {
+      updateOrder(order, direction === "asc" ? "desc" : "asc");
+    } else {
+      updateOrder(key, "asc");
+    }
+  };
+
   const shipmentItems = shipments.map(shipment => (
     <ShipmentItem
       shipment={shipment}
@@ -11,21 +20,10 @@ const ShipmentIndex = ({shipments, orders}) => {
   const shipmentAttributes = [];
   Object.entries(shipments[0] || {}).forEach(([key, value]) => {
     if (typeof value !== "object") {
-      let currentDirection;
-      switch (Math.sign(orders[key])) {
-        case 1:
-          currentDirection = "asc";
-          break;
-        case -1:
-          currentDirection = "desc";
-          break;
-        default:
-          currentDirection = "none";
-          break;
-      }
       shipmentAttributes.push(
         <td
           key={key}
+          onClick={toggleOrder(key)}
         >
           {key}
         </td>

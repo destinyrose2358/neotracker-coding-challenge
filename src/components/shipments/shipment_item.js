@@ -1,6 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-const ShipmentItem = ({ shipment }) => {
+const ShipmentItem = ({ shipment, history }) => {
   const attributeCols = [];
   Object.values(shipment).forEach((value) => {
     if (typeof value !== "object") {
@@ -14,10 +15,12 @@ const ShipmentItem = ({ shipment }) => {
     }
   });
   return (
-    <tr>
+    <tr
+      onClick={() => history.push(`/${shipment.id}`)}
+    >
       {attributeCols}
     </tr>
   )
 }
 
-export default ShipmentItem;
+export default withRouter(ShipmentItem);

@@ -5,6 +5,19 @@ const SettingsController = (props) => {
 
     const [page, setPage] = useState(settings.page);
     const [pageLength, setPageLength] = useState(settings.pageLength);
+    const [criteria, setCriteria] = useState(settings.criteria);
+    const [oldSettings, setOldSettings] = useState(settings);
+    
+    const reset = () => {
+        setPage(settings.page);
+        setPageLength(settings.pageLength);
+        setCriteria(settings.criteria);
+    };
+
+    if (JSON.stringify(oldSettings) !== JSON.stringify(settings)) {
+        reset();
+        setOldSettings(settings);
+    }
 
     const handlePage = (e) => {
         const value = e.target.value;
@@ -17,6 +30,12 @@ const SettingsController = (props) => {
         /^[0-9]*$/.test(value) && setPageLength(value);
         value > 4 && updateSettings({pageLength: parseInt(value)});
     };
+
+    const handleCriteria = e => {
+        const value = e.target.value;
+        setCriteria(value);
+        updateSettings({ criteria: value });
+    }
 
     return (
         <div
@@ -46,6 +65,12 @@ const SettingsController = (props) => {
                 value={pageLength}
                 onChange={handlePageLength}
             />
+            <textarea
+                id="criteria-setting"
+                value={criteria}
+                onChange={handleCriteria}
+            >   
+            </textarea>
         </div>
     );
 }

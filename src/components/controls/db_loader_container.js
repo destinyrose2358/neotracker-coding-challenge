@@ -8,7 +8,7 @@ const msp = ({settings}) => {
 
 const mdp = (dispatch) => {
     return {
-        fetchShipments: (page, pageLength) => dispatch(fetchShipments(page, pageLength))
+        fetchShipments: (page, pageLength, order, direction, criteria) => dispatch(fetchShipments(page, pageLength, order, direction, criteria))
     }
 }
 

@@ -2,16 +2,17 @@ import { connect } from "react-redux"
 import ShipmentIndex from "./shipment_index";
 import { updateSettingsCreator } from "../../actions/settings_actions";
 
-const msp = ({ shipments, settings: { orders } }) => {
+const msp = ({ shipments, settings: { order, direction, page } }) => {
   return {
     shipments: Object.values(shipments),
-    orders
+    order,
+    direction
   }
 };
 
 const mdp = (dispatch) => {
   return {
-    updateOrders: (newOrders = {}) => dispatch(updateSettingsCreator(newOrders))
+    updateOrder: (newOrder, direction) => dispatch(updateSettingsCreator({ order: newOrder, direction, page: 1}))
   }
 };
 

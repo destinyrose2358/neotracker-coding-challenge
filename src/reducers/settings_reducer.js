@@ -3,7 +3,9 @@ import merge from "lodash.merge";
 const defaultSettings = {
     page: 1,
     pageLength: 20,
-    orders: {}
+    order: "id",
+    direction: "asc",
+    criteria: ""
 }
 
 const settingsReducer = (state = defaultSettings, action) => {
